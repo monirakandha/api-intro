@@ -36,4 +36,21 @@ function displayPost(posts){
         <p>USERID:${post.userId}</p>`;      
         postContainer.appendChild(div);
     }
+};
+
+function addPost(){
+    fetch('https://jsonplaceholder.typicode.com/posts',{
+        method: "POST",
+        body:JSON.stringify({
+            title:'This Is new Post title',
+            body:'This is post content',
+            userId:'10',
+            id:'5'
+        }),
+        headers:{
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
 }
