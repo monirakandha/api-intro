@@ -14,7 +14,7 @@ function loadUsers(){
 function loadPosts(){
     fetch('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => displayPostTitle(data));
 }
 
 function displayUsers(data){
@@ -27,3 +27,15 @@ function displayUsers(data){
         ul.appendChild(li);
     }
 }
+
+
+function displayPostTitle(data){
+    
+    const postTitle = document.getElementById('posttitle');
+    for (const post of data ){
+        const li = document.createElement('li');
+        li.innerText = `Post Title : ${post.title}`;
+        postTitle.appendChild(li);
+    }
+}
+
